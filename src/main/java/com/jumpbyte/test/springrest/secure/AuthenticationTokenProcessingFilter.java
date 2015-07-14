@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.GrantedAuthorityImpl;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.web.filter.GenericFilterBean;
@@ -32,7 +32,7 @@ public class AuthenticationTokenProcessingFilter extends GenericFilterBean {
                 System.out.println("valid token found");
                 
                 List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-                authorities.add(new GrantedAuthorityImpl("ROLE_ADMIN"));
+                authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 
                 UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("test", "test");
                 token.setDetails(new WebAuthenticationDetails((HttpServletRequest) request));
