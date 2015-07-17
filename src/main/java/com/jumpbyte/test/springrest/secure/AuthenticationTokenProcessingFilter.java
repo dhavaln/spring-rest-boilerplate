@@ -34,8 +34,6 @@ public class AuthenticationTokenProcessingFilter extends GenericFilterBean {
                 List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
                 authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 
-                UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("test", "test");
-                token.setDetails(new WebAuthenticationDetails((HttpServletRequest) request));
                 Authentication authentication = new UsernamePasswordAuthenticationToken("test", "test", authorities); //this.authenticationProvider.authenticate(token);
                 
                 SecurityContextHolder.getContext().setAuthentication(authentication);
